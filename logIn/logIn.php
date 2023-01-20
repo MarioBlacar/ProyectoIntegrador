@@ -80,6 +80,8 @@
   </section>
 
 </div>
+
+<h1>En proyecto</h1>
 <!-- partial -->
   <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script><script  src="./scriptLogIn.js"></script>
 
