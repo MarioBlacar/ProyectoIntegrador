@@ -22,6 +22,7 @@ overlay.style.display = "none";
 burger.addEventListener("click", (e) => {
   showMenu = !showMenu;
   if (showMenu) {
+    // desplazamiento de las letras móviles
     heroInfoA.style.left = "50%";
     heroInfoB.style.left = "50%";
     heroInfoC.style.left = "50%";
@@ -30,18 +31,22 @@ burger.addEventListener("click", (e) => {
     heroInfoF.style.left = "50%";
     burger.classList.add("active");
     overlay.style.display = "block";
+    // Desplegable para dentro
     gsap.to(overlay, 1, {
-      clipPath: "polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       ease: "expo.in"
     });
   } else {
+    // para que el boton de menu se mueva
     burger.classList.remove("active");
+    // desplazamiento de las letras móviles
     heroInfoA.style.left = "5%";
     heroInfoB.style.left = "5%";
     heroInfoC.style.left = "5%";
     heroInfoD.style.left = "5%";
     heroInfoE.style.left = "5%";
     heroInfoF.style.left = "5%";
+    // desplegable para afuera
     gsap.to(overlay, 1, {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
       ease: "expo.out",
@@ -50,6 +55,7 @@ burger.addEventListener("click", (e) => {
   }
 });
 
+// movimiento inicial de las letras
 gsap.set(["#hero-1 h2, #hero-1 h1, #hero-1 h3"], {
   clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
 });
@@ -65,6 +71,7 @@ gsap.set(
   }
 );
 
+// movimiento continuo por cada fondo
 while (i < 6) {
   tl.to(`#hero-${i} h2`, 0.9, {
     clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
