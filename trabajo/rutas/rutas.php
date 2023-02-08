@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <title>El Cañarete</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./stye.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
 </head>
 
 <body>
@@ -27,13 +28,36 @@
       </nav>
 
       <main>
-        <div id="btnCambiarLogIn">Logearse</div>
-        <div id="btnCambiarRegistro">Registrarse</div>
-        <div id="formulario">
-          <form>
-            <label for=""><strong>Bienvenido</strong></label>
+        <div id="menuLateral"></div>
+        <div id="filtros">
+          <form action="#">
+            <div>
+              <label>Buscar por nombre</label>
+              <input type="text">
+            </div>
+            <div>
+              <label>Distancia Minima</label>
+              <input type="number" min="500">
+            </div>
+            <div>
+              <label>Distancia Maxima</label>
+              <input type="number" min="500">
+            </div>
+            <div>
+              <label>Desnivel minimo</label>
+              <input type="number" min="0">
+            </div>
+            <div>
+              <label>Desnivel maximo</label>
+              <input type="number" min="0">
+            </div>
+            <div>
+              <label>cirucito circular</label>
+              <input type="checkbox">
+            </div>
           </form>
         </div>
+        <div id="map"></div>
       </main>
     </header>
 
@@ -89,6 +113,7 @@
   </div>
   <!-- partial -->
   <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
   <script src="./script.js"></script>
 </body>
 

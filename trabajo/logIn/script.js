@@ -3,6 +3,14 @@ let burger = document.getElementById("burger");
 let overlay = document.querySelector("section");
 let showMenu = false;
 
+if (sessionStorage.getItem("token") == null) {
+  document.getElementById("icono").innerHTML =
+    '<a href="../logIn/logIn.php"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="#6A994E" class="bi bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" /></svg></a>';
+} else {
+  document.getElementById("icono").innerHTML =
+  '<a href="../editarPerfil/editarPerfil.php"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="#6A994E" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></a>';
+}
+
 let tl = gsap.timeline({
   repeat: -1,
   yoyo: true,
@@ -31,116 +39,130 @@ burger.addEventListener("click", (e) => {
 });
 
 // Funciones para el registro
-let botonGuardar = document.getElementById("botonGuardar");
-let botonCambiar = document.getElementById("botonCambiar");
-let inicio = true;
-let paginado = true;
-botonCambiar.addEventListener("click", cambioRegistro);
+let btnCambiarLogIn = document.getElementById("btnCambiarLogIn");
+let btnCambiarRegistro = document.getElementById("btnCambiarRegistro");
+btnCambiarLogIn.addEventListener("click", LogIn);
+btnCambiarRegistro.addEventListener("click", Registro);
 
-function cambioRegistro() {
-  inicio = !inicio;
-  if (inicio) {
-    document.getElementById("nombreRegistro").innerHTML =
-      "<p><strong>EMPEZAR</strong></p>";
-    botonCambiar.innerHTML = "<p><strong>INICIAR SESION</strong></p>";
-    document.querySelector(".container form").innerHTML =
-      "<p><strong>Crear cuenta</strong></p>";
-    document.querySelector(".container form").innerHTML +=
-      '<input id="createName" type="text" placeholder="Nombre completo"><br>';
-    document.querySelector(".container form").innerHTML +=
-      '<input id="createUser" type="text" placeholder="Usuario"><br>';
-    document.querySelector(".container form").innerHTML +=
-      '<input id="createPassword" type="password" placeholder="Contraseña"><br>';
-    document.querySelector(".container form").innerHTML +=
-      '<input id="createEmail" type="email" placeholder="E-mail"><br>';
-    document.querySelector(".container form").innerHTML +=
-      '<input id="botonSiguiente" type="button" value="Siguiente"><br>';
-    document
-      .getElementById("botonSiguiente")
-      .addEventListener("click", siguientePagina);
-  } else {
-    document.getElementById("nombreRegistro").innerHTML =
-      "<p><strong>INICIO</strong></p>";
+let inputs = document.querySelector("#formulario form");
 
-    botonCambiar.innerHTML = "<p><strong>REGISTRARSE</strong></p>";
-    document.querySelector(".container form").innerHTML =
-      "<p><strong>Bienvenido de nuevo</strong></p>";
+function LogIn() {
+  inputs.innerHTML =
+    "<label for='LogInUser'>Usuario</label><input id='LogInUser' type='text'></input><br>";
+  inputs.innerHTML +=
+    "<label for='LogInPassword'>Contraseña</label><input id='LogInPassword' type='text'></input><br>";
 
-    document.querySelector(".container form").innerHTML +=
-      '<input id="LogInUser" type="username" placeholder="usuario"><br>';
-
-    document.querySelector(".container form").innerHTML +=
-      '<input id="LogInPassword" type="password" placeholder="Contraseña"><br>';
-
-    document.querySelector(".container form").innerHTML +=
-      '<input id="botonLog" type="button" value="Iniciar"><br>';
-    document
-      .getElementById("botonLog")
-      .addEventListener("click", iniciarSesion);
-  }
+  inputs.innerHTML += "<input id='iniciarSesion' type='button'>";
+  let btnLogIn = document.getElementById("iniciarSesion");
+  btnLogIn.addEventListener("click", iniciarSesion);
 }
+function Registro() {
+  inputs.style = "padding:0px";
+  inputs.innerHTML =
+    "<label for='createName'>Nombre</label><input id='createName' type='text'></input>";
+  inputs.innerHTML +=
+    "<label for='createUser'>Usuario</label><input id='createUser' type='text'></input><br>";
+  inputs.innerHTML +=
+    "<label for='createPassword'>Contraseña</label><input id='createPassword' type='text'></input>";
+  inputs.innerHTML +=
+    "<label for='craeateEmail'>E-mail</label><input id='craeateEmail' type='text'></input><br>";
+  inputs.innerHTML +=
+    "<label for='createAltura'>Altura</label><input id='createAltura' type='text'></input>";
+  inputs.innerHTML +=
+    "<label for='createPeso'>Peso</label><input id='createPeso' type='text'></input><br>";
+  inputs.innerHTML +=
+    "<label for='createFecha'>Fecha</label><input id='createFecha' type='text'></input><br>";
+  inputs.innerHTML +=
+    "<label for='correr'>Correr</label><input id='correr' type='checkbox'></input>";
+  inputs.innerHTML +=
+    "<label for='alpinismo'>alpinismo</label><input id='alpinismo' type='checkbox'></input><br>";
+  inputs.innerHTML +=
+    "<label for='barranquismo'>barranquismo</label><input id='barranquismo' type='checkbox'></input><br>";
+  inputs.innerHTML +=
+    "<label for='kayakin'>kayakin</label><input id='kayakin' type='checkbox'></input><br>";
+  inputs.innerHTML +=
+    "<label for='senderismo'>senderismo</label><input id='senderismo' type='checkbox'></input><br>";
+  inputs.innerHTML +=
+    "<label for='ciclismo'>ciclismo</label><input id='ciclismo' type='checkbox'></input><br>";
 
-function siguientePagina() {
-  let nombre = document.getElementById("createName").value;
-  let usuario = document.getElementById("createUser").value;
-  let contraseña = document.getElementById("createPassword").value;
-  let email = document.getElementById("createEmail").value;
-  document.querySelector(".container form").innerHTML =
-    '<input id="seeName" type="hidden" value="' +
-    nombre +
-    '"><input id="seeUser" type="hidden" value="' +
-    usuario +
-    '"><input id="seePassword" type="hidden" value="' +
-    contraseña +
-    '"><input id="seeEmail" type="hidden" value="' +
-    email +
-    '">';
-
-  // ----------------------------------------------------------------
-
-  paginado = false;
-  document.getElementById("nombreRegistro").innerHTML =
-    "<p><strong>EMPEZAR</strong></p>";
-
-  botonCambiar.innerHTML = "<p><strong>INICIAR SESION</strong></p>";
-  document.querySelector(".container form").innerHTML +=
-    "<p><strong>Crear cuenta</strong></p>";
-
-  document.querySelector(".container form").innerHTML +=
-    '<input id="createAltura" type="text" placeholder="Altura"><br>';
-
-  document.querySelector(".container form").innerHTML +=
-    '<input id="createPeso" type="text" placeholder="Peso"><br>';
-
-  document.querySelector(".container form").innerHTML +=
-    '<input id="createFecha" type="date" placeholder="Fecha nacimiento"><br>';
-
-  document.querySelector(".container form").innerHTML +=
-    '<input id="createActividades" type="text" placeholder="Actividades"><br>';
-
-  document.querySelector(".container form").innerHTML +=
-    '<input id="botonCreate" type="button" value="Finalizar"><br>';
-  document.getElementById("botonCreate").addEventListener("click", crearSesion);
+  inputs.innerHTML += "<input id='crearSesion' type='button'>";
+  let btnRegistro = document.getElementById("crearSesion");
+  btnRegistro.addEventListener("click", crearSesion);
 }
 
 //Funcionalidad entre la api y la página
 // ----------------------------------------------------------------------------------------------------------
+
+//Funciona
 function iniciarSesion() {
   let usuario = document.getElementById("LogInUser").value;
   let contraseña = document.getElementById("LogInPassword").value;
   console.log(usuario);
   console.log(contraseña);
+  // localhost:{Lo que me ponga en el nodemon}/api/login/
+
+  let url = `http://localhost:5000/api/login/`;
+
+  let user = {
+    username: usuario,
+    pass: contraseña,
+  };
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify(user),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      console.log(json);
+      if ((json.status = 200)) {
+        sessionStorage.setItem("token", json.token);
+        sessionStorage.setItem("id", json.id);
+        console.log(sessionStorage.getItem("token"));
+        if (sessionStorage.getItem("token") == null) {
+          document.getElementById("icono").innerHTML =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="#6A994E" class="bi bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" /></svg>';
+        } else {
+          document.getElementById("icono").innerHTML =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="#6A994E" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>';
+        }
+      } else {
+        inputs.html = `<h1>${json.msg}</h1>`;
+      }
+    })
+    .catch((error) => console.log(error));
 }
 
+//Funciona, no tocar ni con un palo
 function crearSesion() {
-  let nombre = document.getElementById("seeName").value;
-  let usuario = document.getElementById("seeUser").value;
-  let contraseña = document.getElementById("seePassword").value;
-  let email = document.getElementById("seeEmail").value;
+  let nombre = document.getElementById("createName").value;
+  let usuario = document.getElementById("createUser").value;
+  let contraseña = document.getElementById("createPassword").value;
+  let email = document.getElementById("craeateEmail").value;
   let altura = document.getElementById("createAltura").value;
   let peso = document.getElementById("createPeso").value;
   let fechaNac = document.getElementById("createFecha").value;
-  let actividades = document.getElementById("createActividades").value;
+  let boxCorrer = document.getElementById("correr").checked ? "correr" : "";
+  let boxAlpinismo = document.getElementById("alpinismo").checked
+    ? "alpinismo"
+    : "";
+  let boBarranquismo = document.getElementById("barranquismo").checked
+    ? "barranquismo"
+    : "";
+  let boxSenderismo = document.getElementById("senderismo").checked
+    ? "senderismo"
+    : "";
+  let boxKayakin = document.getElementById("kayakin").checked ? "kayakin" : "";
+  let boxCiclismo = document.getElementById("ciclismo").checked
+    ? "ciclismo"
+    : "";
+  // let boxCiclismo = document.getElementById("ciclismo").checked;
+
   console.log(nombre);
   console.log(usuario);
   console.log(contraseña);
@@ -148,10 +170,18 @@ function crearSesion() {
   console.log(altura);
   console.log(peso);
   console.log(fechaNac);
-  console.log(actividades);
-  // localhost:3000/api/user
+  let actividades = [
+    boxCorrer,
+    boxAlpinismo,
+    boBarranquismo,
+    boxSenderismo,
+    boxKayakin,
+    boxCiclismo,
+  ];
+  // localhost:{Lo que me ponga en el nodemon}/api/user
 
-  let url = `https://localhost:3000/api/register/`;
+  let urlRegistro = `http://localhost:5000/api/register/`;
+  let token;
 
   let user = {
     fullname: nombre,
@@ -164,11 +194,23 @@ function crearSesion() {
     activities: actividades,
   };
 
-  fetch(url, {
+  fetch(urlRegistro, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
     body: JSON.stringify(user),
-  });
+  })
+    .then((response) => {
+      console.log(response);
+      return response.json();
+    })
+    .then((json) => {
+      inputs.innerHTML = `<h1>${json.msg}</h1>`;
+    })
+    .catch((error) => console.log(error));
 }
+
+// function cerrarSesion(){
+//   sessionStorage.removeItem("token");
+// }

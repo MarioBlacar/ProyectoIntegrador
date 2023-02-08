@@ -7,6 +7,10 @@
 }
 
 body {
+  background-image: url(../imgs/fondo.jpg);
+  background-attachment: fixed;
+  background-position: 55% 50%;
+  background-size: cover;
   font-family: "Poppins", sans-serif;
 
   --black: #242424;
@@ -30,7 +34,7 @@ header {
   overflow-x: hidden;
 }
 
-/*  NAV: Parte de arriba del menu
+/*  NAV: Top Menu Section
 ----------------------------------------------- */
 nav {
   width: 100%;
@@ -43,7 +47,6 @@ nav {
   border: 5px solid var(--black);
   border-bottom-color: var(--darkgreen);
 }
-
 nav h1 {
   font-size: clamp(0.8rem, 4vw, 1rem);
   font-weight: normal;
@@ -58,7 +61,6 @@ nav ul {
   display: flex;
   color: var(--white);
 }
-
 nav ul li:not(#burger) {
   margin-right: 2em;
 }
@@ -87,111 +89,51 @@ nav ul li:not(#burger) {
   transform: translateY(3px) scaleX(1.3);
 }
 
-/*  MAIN: letras móviles
+/*  Registro
 ----------------------------------------------- */
 main {
   width: 100vw;
   height: 100vh;
+  margin-top: 1%;
   position: relative;
   overflow: hidden;
-}
-main > div {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: var(--i);
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
 }
 
-@media (max-width: 1700px) {
-  .hero-info {
-    display: none;
-  }
+#menuLateral {
+    grid-area: 2 / 1 / 11 / 4;
+  background-color: var(--green);
+  border-radius: 0 20px 0 0;
+}
+#filtros {
+    grid-area: 2 / 4 / 3 / 11;
+  background-color: var(--pill);
+  border-radius: 20px;
+}
+#map {
+    grid-area: 3 / 4 / 11 / 11;
+  background-color: var(--black);
+  border-radius: 20px 0 0 0;
+  z-index: 1;
 }
 
-.hero-info {
-  position: absolute;
-  top: 70%;
-  left: 5%;
-  transform: translateY(-50%);
-  z-index: 8;
-}
-.hero-info h2 {
-  font-size: clamp(2rem, 9vw, 5rem);
-  line-height: clamp(2rem, 9vw, 5rem);
-  text-transform: uppercase;
-}
-.hero-info h1 {
-  color: var(--pill);
-  font-size: clamp(3.2rem, 10vw, 7rem);
-  line-height: clamp(3.2rem, 10vw, 7rem);
-  text-transform: uppercase;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-}
-.hero-info h3 {
-  color: var(--white);
-  font-size: 1.6rem;
-  font-weight: normal;
-  margin-top: 2em;
-}
-
-/* Consigue el efecto vacio en el texto */
-@supports (-webkit-text-stroke: 3px var(--pill)) {
-  .hero-info h2 {
-    color: transparent;
-    -webkit-text-stroke: 3px var(--pill);
-    text-shadow: none;
-  }
-}
-
-.hero-image {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-}
-
-/* Secuencia de fondos recursivos */
-.hi-1 {
-  background-image: url("../imgs/elCañarete.jpg");
-}
-
-.hi-2 {
-  background-image: url("../imgs/alhambra.jpg");
-}
-
-.hi-3 {
-  background-image: url("../imgs/playaCatedrales.jpg");
-}
-
-.hi-4 {
-  background-image: url("../imgs/torreDelOro.jpg");
-}
-
-.hi-5 {
-  background-image: url("../imgs/caminitoDelRey.jpg");
-}
-
-.hi-6 {
-  background-image: url("../imgs/losPicosDeEuropa.jpg");
-}
-
-/*  SECTION: Parte desplegable del menu
+/*  SECTION: Overlay Menu Section
 ----------------------------------------------- */
 section {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 9;
-  height: calc(100vh);
+  min-height: 100vh;
   padding: 8em 5em 2em 5em;
   background-color: var(--white);
   background-image: url("https://www.transparenttextures.com/patterns/church.png");
-  /* recurso para inicio de transicion */
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+  z-index: 5;
 }
 
 a {
@@ -226,7 +168,7 @@ a:hover {
 }
 .level-1 ul > li {
   font-size: 1.2rem;
-  padding: 0.25em;
+  padding: 0.3em;
   transition: color 0.3s;
 }
 .level-1 ul > li:hover {
@@ -259,36 +201,4 @@ a:hover {
   margin: 1em 0;
   text-transform: uppercase;
   border-bottom: 1px solid #fde0ac;
-}
-
-/* Para que encoja */
-@media screen and (max-width: 600px) {
-  nav {
-    padding: 1em 2em;
-  }
-  nav h1 {
-    font-size: 0.9rem;
-  }
-  section {
-    padding: 8em 2em 2em 2em;
-  }
-  .level-1 {
-    grid-template-columns: 1fr;
-  }
-  .level-1 li:nth-of-type(1) {
-    grid-column: 1/2;
-    grid-row: 1/2;
-  }
-  .level-1 li:nth-of-type(2) {
-    grid-column: 1/2;
-    grid-row: 2/3;
-  }
-  .level-1 li:nth-of-type(3) {
-    grid-column: 1/2;
-    grid-row: 3/4;
-  }
-  .level-1 li:nth-of-type(4) {
-    grid-column: 1/2;
-    grid-row: 4/5;
-  }
 }
