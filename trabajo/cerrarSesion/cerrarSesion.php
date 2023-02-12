@@ -63,8 +63,8 @@
                     <h3>Empezar</h3>
                     <ul>
                         <li><a href="../logIn/logIn.php">Iniciar sesion</a></li>
-                        <li><a href="../rutas/rutas.php">Buscar rutas</li>
-                        <li>Rutas guardadas</li>
+                        <li><a href="../rutas/rutas.php">Buscar rutas</a></li>
+                        <li><a href="../rutas/rutas.php">Rutas guardadas</a></li>
                         <li><a href="../landingPage/index.html">Página principal</a></li>
                     </ul>
                     <p><small><a href="../cerrarSesion/cerrarSesion.php">Cerrar sesion</a></small></p>

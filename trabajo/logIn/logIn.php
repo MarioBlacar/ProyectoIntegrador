@@ -27,11 +27,11 @@
       </nav>
 
       <main>
-        <div id="btnCambiarLogIn">Logearse</div>
-        <div id="btnCambiarRegistro">Registrarse</div>
+        
         <div id="formulario">
-          <form>
-            <label for=""><strong>Bienvenido</strong></label>
+          <div id="btnCambiarLogIn">Logearse</div>
+          <div id="btnCambiarRegistro">Registrarse</div>
+          <form >
           </form>
         </div>
       </main>

@@ -47,45 +47,25 @@ btnCambiarRegistro.addEventListener("click", Registro);
 let inputs = document.querySelector("#formulario form");
 
 function LogIn() {
-  inputs.innerHTML =
-    "<label for='LogInUser'>Usuario</label><input id='LogInUser' type='text'></input><br>";
-  inputs.innerHTML +=
-    "<label for='LogInPassword'>Contraseña</label><input id='LogInPassword' type='text'></input><br>";
-
-  inputs.innerHTML += "<input id='iniciarSesion' type='button'>";
+  inputs.innerHTML ="<div class='datos' id='divA'><label for='LogInUser'>Usuario</label><br><input id='LogInUser' type='text'></input></div>";
+  inputs.innerHTML +="<div class='datos' id='divB'><label for='LogInPassword'>Contraseña</label><br><input id='LogInPassword' type='text'></input></div>";
+  inputs.innerHTML +="<div class='datos' id='divC'><input id='iniciarSesion' type='button' value='iniciar Sesion'></div>";
   let btnLogIn = document.getElementById("iniciarSesion");
   btnLogIn.addEventListener("click", iniciarSesion);
+
 }
 function Registro() {
   inputs.style = "padding:0px";
-  inputs.innerHTML =
-    "<label for='createName'>Nombre</label><input id='createName' type='text'></input>";
-  inputs.innerHTML +=
-    "<label for='createUser'>Usuario</label><input id='createUser' type='text'></input><br>";
-  inputs.innerHTML +=
-    "<label for='createPassword'>Contraseña</label><input id='createPassword' type='text'></input>";
-  inputs.innerHTML +=
-    "<label for='craeateEmail'>E-mail</label><input id='craeateEmail' type='text'></input><br>";
-  inputs.innerHTML +=
-    "<label for='createAltura'>Altura</label><input id='createAltura' type='text'></input>";
-  inputs.innerHTML +=
-    "<label for='createPeso'>Peso</label><input id='createPeso' type='text'></input><br>";
-  inputs.innerHTML +=
-    "<label for='createFecha'>Fecha</label><input id='createFecha' type='text'></input><br>";
-  inputs.innerHTML +=
-    "<label for='correr'>Correr</label><input id='correr' type='checkbox'></input>";
-  inputs.innerHTML +=
-    "<label for='alpinismo'>alpinismo</label><input id='alpinismo' type='checkbox'></input><br>";
-  inputs.innerHTML +=
-    "<label for='barranquismo'>barranquismo</label><input id='barranquismo' type='checkbox'></input><br>";
-  inputs.innerHTML +=
-    "<label for='kayakin'>kayakin</label><input id='kayakin' type='checkbox'></input><br>";
-  inputs.innerHTML +=
-    "<label for='senderismo'>senderismo</label><input id='senderismo' type='checkbox'></input><br>";
-  inputs.innerHTML +=
-    "<label for='ciclismo'>ciclismo</label><input id='ciclismo' type='checkbox'></input><br>";
-
-  inputs.innerHTML += "<input id='crearSesion' type='button'>";
+  inputs.innerHTML ="<div class='datos' id='div1'><label for='createName'>Nombre</label><br><input id='createName' type='text'></input></div>";
+  inputs.innerHTML +="<div class='datos' id='div2'><label for='createUser'>Usuario</label><br><input id='createUser' type='text'></input></div>";
+  inputs.innerHTML +="<div class='datos' id='div3'><label for='createPassword'>Contraseña</label><br><input id='createPassword' type='text'></input></div>";
+  inputs.innerHTML +="<div class='datos' id='div4'><label for='craeateEmail'>E-mail</label><br><input id='craeateEmail' type='text'></input></div>";
+  inputs.innerHTML +="<div class='datos' id='div5'><label for='createPeso'>Peso</label><br><input id='createPeso' type='text'></input></div>";
+  inputs.innerHTML +="<div class='datos' id='div6'><label for='createAltura'>Altura</label><br><input id='createAltura' type='text'></input></div>";
+  inputs.innerHTML +="<div class='datos' id='div7'><label for='createFecha'>Fecha</label><br><input id='createFecha' type='text'></input></div>";
+  inputs.innerHTML +="<div class='datos' id='div8'><label class='actividades' for='correr'>Correr</label><input id='correr' type='checkbox'></input><br><label class='actividades' for='alpinismo'>alpinismo</label><input id='alpinismo' type='checkbox'></input><br><label class='actividades' for='barranquismo'>barranquismo</label><input id='barranquismo' type='checkbox'></input><br></div>";
+  inputs.innerHTML +="<div class='datos' id='div9'><label class='actividades' for='kayakin'>kayakin</label><input id='kayakin' type='checkbox'></input><br><label class='actividades' for='senderismo'>senderismo</label><input id='senderismo' type='checkbox'></input><br><label class='actividades' for='ciclismo'>ciclismo</label><input id='ciclismo' type='checkbox'></input><br></div>";
+  inputs.innerHTML +="<div class='datos' id='div10'><input id='crearSesion' type='button' value='Registrarse'></div>";
   let btnRegistro = document.getElementById("crearSesion");
   btnRegistro.addEventListener("click", crearSesion);
 }
@@ -126,10 +106,10 @@ function iniciarSesion() {
         console.log(sessionStorage.getItem("token"));
         if (sessionStorage.getItem("token") == null) {
           document.getElementById("icono").innerHTML =
-            '<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="#6A994E" class="bi bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" /></svg>';
+            '<a href="../logIn/logIn.php"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="#6A994E" class="bi bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" /></svg></a>';
         } else {
           document.getElementById("icono").innerHTML =
-            '<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="#6A994E" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>';
+          '<a href="../editarPerfil/editarPerfil.php"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="#6A994E" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></a>';
         }
       } else {
         inputs.html = `<h1>${json.msg}</h1>`;

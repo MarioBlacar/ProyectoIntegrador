@@ -28,23 +28,28 @@
 
             <main>
                 <div id="formulario">
-                    <form action="#">
-                        <label for='createPassword'>Contraseña</label><input id='changePassword' type='text'></input>
-                        <label for='craeateEmail'>E-mail</label><input id='changeEmail' type='text'></input><br>
-                        <label for='createAltura'>Altura</label><input id='changeAltura' type='text'></input>
-                        <label for='createPeso'>Peso</label><input id='changePeso' type='text'></input><br>
-                        <label for='createFecha'>Fecha</label><input id='changeFecha' type='text'></input><br>
-                        <label for='correr'>Correr</label><input id='correr' type='checkbox'></input>
-                        <label for='alpinismo'>alpinismo</label><input id='alpinismo' type='checkbox'></input><br>
-                        <label for='barranquismo'>barranquismo</label><input id='barranquismo' type='checkbox'></input><br>
-                        <label for='kayakin'>kayakin</label><input id='kayakin' type='checkbox'></input><br>
-                        <label for='senderismo'>senderismo</label><input id='senderismo' type='checkbox'></input><br>
-                        <label for='ciclismo'>ciclismo</label><input id='ciclismo' type='checkbox'></input><br>
-                    </form>
+                    <center>
+                        <form action="#">
+                            <div id="div1"><label for='createPassword'>Contraseña</label><br><input id='changePassword' type='text'></input></div>
+                            <div id="div2"><label for='craeateEmail'>E-mail</label><br><input id='changeEmail' type='text'></input><br></div>
+                            <div id="div3"><label for='createAltura'>Altura</label><br><input id='changeAltura' type='text'></input></div>
+                            <div id="div4"><label for='createPeso'>Peso</label><br><input id='changePeso' type='text'></input><br></div>
+                            <div id="div5"><label for='createFecha'>Fecha</label><br><input id='changeFecha' type='text'></input><br></div>
+                            <div id="div6">
+                                <label for='correr'>Correr</label><input id='correr' type='checkbox'></input><br>
+                                <label for='alpinismo'>alpinismo</label><input id='alpinismo' type='checkbox'></input><br>
+                                <label for='barranquismo'>barranquismo</label><input id='barranquismo' type='checkbox'></input><br>
+                                <label for='kayakin'>kayakin</label><input id='kayakin' type='checkbox'></input><br>
+                                <label for='senderismo'>senderismo</label><input id='senderismo' type='checkbox'></input><br>
+                                <label for='ciclismo'>ciclismo</label><input id='ciclismo' type='checkbox'></input><br>
+                            </div>
+                            <div id="boton">
+                                <h3>editar perfil</h3>
+                            </div>
+                        </form>
+                    </center>
                 </div>
-                <div id="boton">
-                    <h3>editar perfil</h3>
-                </div>
+
             </main>
         </header>
 
@@ -73,8 +78,8 @@
                     <h3>Empezar</h3>
                     <ul>
                         <li><a href="../logIn/logIn.php">Iniciar sesion</a></li>
-                        <li><a href="../rutas/rutas.php">Buscar rutas</li>
-                        <li>Rutas guardadas</li>
+                        <li><a href="../rutas/rutas.php">Buscar rutas</a></li>
+                        <li><a href="../rutas/rutas.php">Rutas guardadas</a></li>
                         <li><a href="../landingPage/index.html">Página principal</a></li>
                     </ul>
                     <p><small><a href="../cerrarSesion/cerrarSesion.php">Cerrar sesion</a></small></p>

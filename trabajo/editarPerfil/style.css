@@ -107,9 +107,23 @@ main {
   background-color: var(--green);
   border-radius: 20px;
 }
+#formulario form{
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+#div1 { grid-area: 2 / 3 / 3 / 6; }
+#div2 { grid-area: 2 / 7 / 3 / 10; }
+#div3 { grid-area: 4 / 2 / 5 / 5; }
+#div4 { grid-area: 4 / 5 / 5 / 8; }
+#div5 { grid-area: 4 / 8 / 5 / 11; }
+#div6 { grid-area: 6 / 4 / 9 / 9; }
 
 #boton {
-  grid-area: 8 / 5 / 10 / 7;
+  grid-area: 8 / 5 / 11 / 8;
   background-color: var(--darkgreen);
   cursor: pointer;
   padding: 10px;
