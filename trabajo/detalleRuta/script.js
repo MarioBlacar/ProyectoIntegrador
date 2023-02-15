@@ -53,29 +53,13 @@ let botonFiltro = document.getElementById("botonFiltrar");
 botonFiltro.addEventListener("click", rellenarMenuLateral);
 
 function rellenarMenuLateral() {
-  let url = `../../api/rutas/verRutas.php`;
+  let id = document.getElementById("id").value;
+  console.log(id);
+    //averiguar como conseguir el id de la ruta 
+    let url = `../../api/rutas/verRutas.php?buscarId=${id}`;
+    console.log(url);
   let ruta = document.createElement("div");
   let menu = document.getElementById("menuLateral");
-
-  let filtroNombre= document.getElementById("nombreRuta").value;
-  let filtroDistanciaMinima= document.getElementById("distanciaMinima").value;
-  let filtroDistanciaMaxima= document.getElementById("distanciaMaxima").value;
-  let filtroLocalidad= document.getElementById("localidad").value;
-
-  if(filtroNombre!=""){
-    url = url + `?buscarNombre=${filtroNombre}`;
-    console.log(url);
-  }if(filtroDistanciaMinima!=""){
-    url = url + `?buscarDistanciaMinima=${filtroDistanciaMinima}`;
-    console.log(url);
-  }if(filtroDistanciaMaxima!=""){
-    url = url + `?buscarDistanciaMaxima=${filtroDistanciaMaxima}`;
-    console.log(url);
-  }if(filtroLocalidad!=""){
-    url = url + `?buscarLocalidad=${filtroLocalidad}`;
-    console.log(url);
-  }
-  menu.innerHTML = "<a href='../añadirRuta/añadirRuta.php'>Añadir ruta</a>";
 
   fetch(url)
     .then((response) => {
@@ -83,8 +67,9 @@ function rellenarMenuLateral() {
     })
     .then((json) => {
       json.forEach((element) => {
+        
         ruta.innerHTML += `<div id="ruta">`;
-        ruta.innerHTML += `<tr><td>${element.nombreRuta}</td><br><td>Distancia: ${element.distancia} m</td><br><td><a href='../detalleRuta/detalleRuta.php?id=${element.idRutas}'>Detalle</a></td><br></tr><br><br>`;
+        ruta.innerHTML += `<tr><td>${element.nombreRuta}</td><br><td>Distancia: ${element.distancia} m</td><br><td>Provincia: ${element.localidad}</td><br><td>Creador de la ruta: ${element.creador}</td><br></tr><br><br>`;
         ruta.innerHTML += `</div>`;
 
         var marker = L.marker([element.latitudInicio, element.longitudInicio], {

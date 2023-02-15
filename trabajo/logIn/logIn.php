@@ -29,7 +29,7 @@
       <main>
         
         <div id="formulario">
-          <div id="btnCambiarLogIn">Logearse</div>
+          <div id="btnCambiarLogIn">login</div>
           <div id="btnCambiarRegistro">Registrarse</div>
           <form >
           </form>

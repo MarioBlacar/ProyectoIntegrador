@@ -45,6 +45,7 @@ boton.addEventListener("click", cerrarSesion);
 
 function cerrarSesion() {
   sessionStorage.removeItem("token");
+  sessionStorage.removeItem("id");
   console.log(sessionStorage.getItem("token"));
   if (sessionStorage.getItem("token") == null) {
     document.getElementById("icono").innerHTML =

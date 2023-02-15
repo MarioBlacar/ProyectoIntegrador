@@ -105,17 +105,17 @@ main {
 }
 
 #menuLateral {
-    grid-area: 2 / 1 / 11 / 4;
+  grid-area: 2 / 1 / 11 / 4;
   background-color: var(--green);
   border-radius: 0 20px 0 0;
 }
 #filtros {
-    grid-area: 2 / 4 / 3 / 11;
+  grid-area: 2 / 4 / 3 / 11;
   background-color: var(--pill);
   border-radius: 20px;
 }
 #map {
-    grid-area: 3 / 4 / 11 / 11;
+  grid-area: 3 / 4 / 11 / 11;
   background-color: var(--black);
   border-radius: 20px 0 0 0;
   z-index: 1;
@@ -203,8 +203,12 @@ a:hover {
   border-bottom: 1px solid #fde0ac;
 }
 
-
 /* despliegue de rutas */
-#rutas{
-  
+#botonCrear, #botonVerZona{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--darkgreen);
 }

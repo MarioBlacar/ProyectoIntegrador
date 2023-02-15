@@ -7,7 +7,7 @@
 }
 
 body {
-  background-image: url(../imgs/fondo.jpg);
+  background-image: url(../imgs/fondoRutas.jpg);
   background-attachment: fixed;
   background-position: 55% 50%;
   background-size: cover;
@@ -94,106 +94,31 @@ nav ul li:not(#burger) {
 main {
   width: 100vw;
   height: 100vh;
+  margin-top: 1%;
   position: relative;
   overflow: hidden;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
 }
-#formulario {
-  grid-area: 3 / 3 / 10 / 9;
+
+#menuLateral {
+    grid-area: 2 / 1 / 11 / 4;
   background-color: var(--green);
+  border-radius: 0 20px 0 0;
+}
+#filtros {
+    grid-area: 2 / 4 / 3 / 11;
+  background-color: var(--pill);
   border-radius: 20px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
 }
-form {
-  grid-area: 4 / 2 / 12 / 12;
-  background-color: var(--darkgreen);
-  position: relative;
-  text-align: center;
-  font-weight: normal;
-  text-transform: uppercase;
-  color: var(--pill);
-  display: grid;
-  grid-template-columns: repeat(11, 1fr);
-  grid-template-rows: repeat(11, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-    
-.datos {
-  /* background-color: var(--green); */
-  font-size: clamp(1rem, 4vw, 1rem);
-}
-/* Colocacion de datos para la funcion de log in */
-#divA { grid-area: 3 / 2 / 7 / 6; }
-#divB { grid-area: 3 / 7 / 7 / 11; }
-#divC { 
-  margin: 30px;
-  grid-area: 8 / 5 / 11 / 8; 
-}
-
-/* Colocacion de datos para la funcion de registro */
-#div1 {grid-area: 2 / 2 / 3 / 6;}
-#div2 {grid-area: 2 / 7 / 3 / 11;}
-#div3 {grid-area: 4 / 2 / 5 / 5;}
-#div4 {grid-area: 6 / 2 / 7 / 5;}
-#div5 {grid-area: 4 / 8 / 5 / 11;}
-#div6 {grid-area: 6 / 8 / 7 / 11;}
-#div7 {
-  margin: 10px;
-  grid-area: 4 / 5 / 7 / 8;
-}
-#div8 {grid-area: 8 / 2 / 11 / 5;}
-#div9 {grid-area: 8 / 8 / 11 / 11;}
-#div10 {
-  margin: 30px;
-  grid-area: 8 / 5 / 11 / 8;
-}
-
-.actividades {
-  font-size: clamp(0.5rem, 4vw, 1rem);
-}
-
-#btnCambiarLogIn {
-  grid-area: 2 / 3 / 3 / 5;
-  background-color: var(--darkgreen);
-  cursor: pointer;
-  padding: 10px;
-  text-align: center;
-  font-size: clamp(0.8rem, 4vw, 1rem);
-  font-weight: normal;
-  text-transform: uppercase;
-  color: var(--pill);
-}
-
-#btnCambiarRegistro {
-  grid-area: 2 / 9 / 3 / 11;
-  background-color: var(--darkgreen);
-  cursor: pointer;
-  padding: 10px;
-  text-align: center;
-  font-size: clamp(0.8rem, 4vw, 1rem);
-  font-weight: normal;
-  text-transform: uppercase;
-  color: var(--pill);
-}
-
-#crearSesion, #iniciarSesion {
-  cursor: pointer;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  font-size: clamp(0.8rem, 4vw, 1rem);
-  text-transform: uppercase;
+#map {
+    grid-area: 3 / 4 / 11 / 11;
   background-color: var(--black);
-  color: var(--pill);
+  border-radius: 20px 0 0 0;
+  z-index: 1;
 }
 
 /*  SECTION: Overlay Menu Section
@@ -208,6 +133,7 @@ section {
   background-color: var(--white);
   background-image: url("https://www.transparenttextures.com/patterns/church.png");
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+  z-index: 5;
 }
 
 a {
@@ -275,4 +201,12 @@ a:hover {
   margin: 1em 0;
   text-transform: uppercase;
   border-bottom: 1px solid #fde0ac;
+}
+
+
+/* despliegue de rutas */
+#botonAñadirRuta{
+  background-color: blue;
+  height: 200px;
+  width: 200px;
 }

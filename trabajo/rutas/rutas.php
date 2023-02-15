@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <title>El Cañarete</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" />
-  <link rel="stylesheet" href="./stye.css" />
+  <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
 </head>
 
@@ -29,33 +29,27 @@
 
       <main>
         <div id="menuLateral"></div>
+        
         <div id="filtros">
           <form action="#">
             <div>
               <label>Buscar por nombre</label>
-              <input type="text">
+              <input id="nombreRuta" type="text">
             </div>
             <div>
               <label>Distancia Minima</label>
-              <input type="number" min="500">
+              <input id="distanciaMinima" type="number" min="500">
             </div>
             <div>
               <label>Distancia Maxima</label>
-              <input type="number" min="500">
+              <input id="distanciaMaxima" type="number" min="500">
             </div>
             <div>
-              <label>Desnivel minimo</label>
-              <input type="number" min="0">
-            </div>
-            <div>
-              <label>Desnivel maximo</label>
-              <input type="number" min="0">
-            </div>
-            <div>
-              <label>cirucito circular</label>
-              <input type="checkbox">
+              <label>localidad</label>
+              <input id="localidad" type="text">
             </div>
           </form>
+          <div id="botonFiltrar">Filtrar</div>
         </div>
         <div id="map"></div>
       </main>

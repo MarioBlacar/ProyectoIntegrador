@@ -57,15 +57,16 @@ function editarDatosSesion() {
   let senderismo = document.getElementById("senderismo").checked ? "senderismo" : "";
   let ciclismo = document.getElementById("ciclismo").checked ? "ciclismo" : "";
 
-  let url = `http://localhost:5000/api/user`;
+  let url = `../../api/usuarios/modificarUsuario.php`;
 
   let changedUser = {
+    usuario:localStorage.getItem("usuario"),
     email: email,
-    pass: contraseña,
-    height: altura,
-    weight: peso,
-    birthday: fecha,
-    activities: [
+    contraseña: contraseña,
+    altura: altura,
+    peso: peso,
+    fecha: fecha,
+    actividades: [
       correr,
       alpinismo,
       barranquismo,
@@ -74,7 +75,7 @@ function editarDatosSesion() {
       ciclismo
     ],
   };
-  console.log(sessionStorage.getItem("id"));
+  console.log(sessionStorage.getItem("usuario"));
 
   fetch(url, {
     method: "PUT",
@@ -90,9 +91,9 @@ function editarDatosSesion() {
     .then((json) => {
       console.log(json);
       if ((json.status = 200)) {
-        // escribir mensaje de realizado
+        alert("accion realizada");
       } else {
-        // escribir mensaje de no realizado
+        alert("accion no realizada");
       }
     })
     .catch((error) => console.log(error));

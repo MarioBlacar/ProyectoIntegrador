@@ -1,35 +1,49 @@
 <?php
+require '../vendor/autoload.php';
 require_once '../conexion.php';
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 $con = new Conexion();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $json = json_decode(file_get_contents('php://input'), true);
+
     if (
-        isset($_POST['nombre']) && isset($_POST['usuario'])
-        && isset($_POST['contraseña']) && isset($_POST['fecha'])
-        && isset($_POST['peso']) && isset($_POST['altura'])
-        && isset($_POST['e-mail']) && isset($_POST['actividades'])
+        isset($json['nombre']) && isset($json['usuario'])
+        && isset($json['contraseña']) && isset($json['fecha'])
+        && isset($json['peso']) && isset($json['altura'])
+        && isset($json['email']) && isset($json['actividades'])
     ) {
-        // el id se debe cambiar
-        $id=1;
-        $nombre = $_POST['nombre'];
-        $usuario = $_POST['usuario'];
-        $contraseña = $_POST['contraseña'];
-        $fecha = $_POST['fecha'];
-        $peso = $_POST['peso'];
-        $altura = $_POST['altura'];
-        $email = $_POST['e-mail'];
-        $actividades = $_POST['actividades'];
-        $sql = "INSERT INTO usuario (id, nombre, usuario, contraseña,
-     email, altura, peso, actividades) VALUES ('$id','$nombre','$usuario', '$contraseña', '$email',
+        $json['actividades'] = implode(",", $json['actividades']);
+
+        $nombre = $json['nombre'];
+        $usuario = $json['usuario'];
+        $contraseña = $json['contraseña'];
+        $fecha = $json['fecha'];
+        $peso = $json['peso'];
+        $altura = $json['altura'];
+        $email = $json['email'];
+        $actividades = $json['actividades'];
+        $sql = "INSERT INTO usuario ( nombre, usuario, contraseña,
+     email, altura, peso, actividades) VALUES ('$nombre','$usuario', '$contraseña', '$email',
      '$altura', '$peso', '$actividades')";
+        echo $sql;
         try {
             $con->query($sql);
+            $id = $con->insert_id;
             header("HTTP/1.1 201 Created");
-            echo json_encode($con->insert_id);
+            $key = 'ga$p4sh0';
+            $payload = [
+                'id' => $id
+            ];
+            $jwt = JWT::encode($payload, $key, 'HS256');
+            echo json_encode(['token' => $jwt]);
         } catch (mysqli_sql_exception $e) {
             header("HTTP/1.1 400 Bad Request");
         }
     } else {
-        header("HTTP/1.1 400 Bad Request");
+        header("HTTP/1.1 401 Bad Request");
     }
     exit;
 }

@@ -3,33 +3,34 @@ require_once '../conexion.php';
 $con = new Conexion();
 if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     if (
-        isset($_POST['nombre']) && isset($_POST['usuario'])
-        && isset($_POST['contraseña']) && isset($_POST['fecha'])
-        && isset($_POST['peso']) && isset($_POST['altura'])
-        && isset($_POST['e-mail']) && isset($_POST['actividades'])
+        isset($json['usuario'])
+        && isset($json['contraseña']) && isset($json['fecha'])
+        && isset($json['peso']) && isset($json['altura'])
+        && isset($json['e-mail']) && isset($json['actividades'])
     ) {
-        // el id se debe cambiar
-        $id = 1;
-        $nombre = $_POST['nombre'];
-        $usuario = $_POST['usuario'];
-        $contraseña = $_POST['contraseña'];
-        $fecha = $_POST['fecha'];
-        $peso = $_POST['peso'];
-        $altura = $_POST['altura'];
-        $email = $_POST['e-mail'];
-        $actividades = $_POST['actividades'];
-        $sql = "UPDATE alumnos SET nombre='$nombre', usuario='$usuario',
-     contraseña='$contraseña', fecha='$fecha', peso='$peso',
-     altura='$altura',email='$email', actividades='$actividades' WHERE id='$id'";
+        $json['actividades'] = implode(",", $json['actividades']);
+
+        $usuario = $json['usuario'];
+        $contraseña = $json['contraseña'];
+        $peso = $json['peso'];
+        $altura = $json['altura'];
+        $email = $json['e-mail'];
+        $actividades = $json['actividades'];
+
+        $sql = "UPDATE usuario SET usuario='$usuario',
+        contraseña='$contraseña', peso='$peso',
+        altura='$altura',email='$email', actividades='$actividades' WHERE usuario='$usuario'";
+        echo $sql;
         try {
             $con->query($sql);
             header("HTTP/1.1 200 OK");
             echo json_encode($id);
         } catch (mysqli_sql_exception $e) {
             header("HTTP/1.1 400 Bad Request");
+            echo json_encode(['msg' => "accion no realizada"]);
         }
     } else {
-        header("HTTP/1.1 400 Bad Request");
+        header("HTTP/1.1 401 Bad Request");
     }
     exit;
 }
