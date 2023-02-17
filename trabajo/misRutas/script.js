@@ -58,8 +58,9 @@ burger.addEventListener("click", (e) => {
 
 //Funcionalidad entre la api y la página
 // ----------------------------------------------------------------------------------------------------------
+console.log(sessionStorage.getItem("usuario"));
 function rellenarMenuLateral() {
-  let url = `../../api/rutas/verRutas.php`;
+  let url = `../../api/rutas/verRutas.php?buscarUsuario=${sessionStorage.getItem("usuario")}`;
   let menu = document.getElementById("menuLateral");
 
   let filtroNombre= document.getElementById("nombreRuta").value;

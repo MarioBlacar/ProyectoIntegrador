@@ -32,26 +32,27 @@
         
         <div id="filtros">
           <form action="#">
-            <div>
+            <div id="filtro1">
               <label>Buscar por nombre</label>
               <input id="nombreRuta" type="text">
             </div>
-            <div>
+            <div id="filtro2">
               <label>Distancia Minima</label>
               <input id="distanciaMinima" type="number" min="500">
             </div>
-            <div>
+            <div id="filtro3">
               <label>Distancia Maxima</label>
               <input id="distanciaMaxima" type="number" min="500">
             </div>
-            <div>
+            <div id="filtro4">
               <label>localidad</label>
               <input id="localidad" type="text">
             </div>
+            <div id="botonFiltrar">Filtrar</div>
           </form>
-          <div id="botonFiltrar">Filtrar</div>
         </div>
         <div id="map"></div>
+        <div id="botonNuevo"><a href='../añadirRuta/añadirRuta.php'> + </a></div>
       </main>
     </header>
 
@@ -81,7 +82,7 @@
           <ul>
             <li><a href="../logIn/logIn.php">Iniciar sesion</a></li>
             <li><a href="../rutas/rutas.php">Buscar rutas</a></li>
-            <li><a href="../rutas/rutas.php">Rutas guardadas</a></li>
+            <li><a href="../misRutas/misRutas.php">Rutas guardadas</a></li>
             <li><a href="../landingPage/index.html">Página principal</a></li>
           </ul>
           <p><small><a href="../cerrarSesion/cerrarSesion.php">Cerrar sesion</a></small></p>
@@ -93,14 +94,6 @@
             <li>Idioma</li>
           </ul>
           <p><small>mas recursos...</small></p>
-        </li>
-        <li>
-          <h3>Sobre Nosotros</h3>
-          <ul>
-            <li>Nuestra Historia</li>
-            <li>Trabaja con nosotros</li>
-            <li>Instagram</li>
-          </ul>
         </li>
       </ul>
     </section>

@@ -160,6 +160,12 @@ a:hover {
   color: var(--green);
   opacity: 1;
 }
+h1 > a{
+  color: var(--pill);
+}
+h1 > a:hover{
+  color: var(--black);
+}
 
 .level-1 {
   display: grid;

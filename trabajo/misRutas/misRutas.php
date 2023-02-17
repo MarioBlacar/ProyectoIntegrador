@@ -10,10 +10,6 @@
 </head>
 
 <body>
-    <?php
-    $id = $_GET['id'];
-    echo "<input type='hidden' id='id' value='$id'></input>";
-    ?>
     <!-- partial:index.partial.html -->
     <div class="page-wrap">
         <header class="page-header">
@@ -34,7 +30,29 @@
             <main>
                 <div id="menuLateral"></div>
 
+                <div id="filtros">
+                    <form action="#">
+                        <div id="filtro1">
+                            <label>Buscar por nombre</label>
+                            <input id="nombreRuta" type="text">
+                        </div>
+                        <div id="filtro2">
+                            <label>Distancia Minima</label>
+                            <input id="distanciaMinima" type="number" min="500">
+                        </div>
+                        <div id="filtro3">
+                            <label>Distancia Maxima</label>
+                            <input id="distanciaMaxima" type="number" min="500">
+                        </div>
+                        <div id="filtro4">
+                            <label>localidad</label>
+                            <input id="localidad" type="text">
+                        </div>
+                        <div id="botonFiltrar">Filtrar</div>
+                    </form>
+                </div>
                 <div id="map"></div>
+                <div id="botonNuevo"><a href='../añadirRuta/añadirRuta.php'> + </a></div>
             </main>
         </header>
 

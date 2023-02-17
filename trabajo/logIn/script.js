@@ -50,7 +50,7 @@ function LogIn() {
   inputs.innerHTML =
     "<div class='datos' id='divA'><label for='LogInUser'>Usuario</label><br><input id='LogInUser' type='text'></input></div>";
   inputs.innerHTML +=
-    "<div class='datos' id='divB'><label for='LogInPassword'>Contraseña</label><br><input id='LogInPassword' type='text'></input></div>";
+    "<div class='datos' id='divB'><label for='LogInPassword'>Contraseña</label><br><input id='LogInPassword' type='password'></input></div>";
   inputs.innerHTML +=
     "<div class='datos' id='divC'><input id='iniciarSesion' type='button' value='iniciar Sesion'></div>";
   let btnLogIn = document.getElementById("iniciarSesion");
@@ -63,15 +63,15 @@ function Registro() {
   inputs.innerHTML +=
     "<div class='datos' id='div2'><label for='createUser'>Usuario</label><br><input id='createUser' type='text'></input></div>";
   inputs.innerHTML +=
-    "<div class='datos' id='div3'><label for='createPassword'>Contraseña</label><br><input id='createPassword' type='text'></input></div>";
+    "<div class='datos' id='div3'><label for='createPassword'>Contraseña</label><br><input id='createPassword' type='password'></input></div>";
   inputs.innerHTML +=
-    "<div class='datos' id='div4'><label for='craeateEmail'>E-mail</label><br><input id='craeateEmail' type='text'></input></div>";
+    "<div class='datos' id='div4'><label for='craeateEmail'>E-mail</label><br><input id='craeateEmail' type='email'></input></div>";
   inputs.innerHTML +=
-    "<div class='datos' id='div5'><label for='createPeso'>Peso</label><br><input id='createPeso' type='text'></input></div>";
+    "<div class='datos' id='div5'><label for='createPeso'>Peso</label><br><input id='createPeso' type='num'></input></div>";
   inputs.innerHTML +=
-    "<div class='datos' id='div6'><label for='createAltura'>Altura</label><br><input id='createAltura' type='text'></input></div>";
+    "<div class='datos' id='div6'><label for='createAltura'>Altura</label><br><input id='createAltura' type='num'></input></div>";
   inputs.innerHTML +=
-    "<div class='datos' id='div7'><label for='createFecha'>Fecha</label><br><input id='createFecha' type='text'></input></div>";
+    "<div class='datos' id='div7'><label for='createFecha'>Fecha</label><br><input id='createFecha' type='date'></input></div>";
   inputs.innerHTML +=
     "<div class='datos' id='div8'><label class='actividades' for='correr'>Correr</label><input id='correr' type='checkbox'></input><br><label class='actividades' for='alpinismo'>alpinismo</label><input id='alpinismo' type='checkbox'></input><br><label class='actividades' for='barranquismo'>barranquismo</label><input id='barranquismo' type='checkbox'></input><br></div>";
   inputs.innerHTML +=
@@ -91,6 +91,7 @@ function iniciarSesion() {
   let contraseña = document.getElementById("LogInPassword").value;
   console.log(usuario);
   console.log(contraseña);
+  
 
   // localhost:{Lo que me ponga en el nodemon}/api/login/
   let url = `../../api/usuarios/obtenerUsuario.php`;
@@ -122,9 +123,11 @@ function iniciarSesion() {
           document.getElementById("icono").innerHTML =
             '<a href="../editarPerfil/editarPerfil.php"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="#6A994E" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></a>';
         }
+        alert("Has iniciado sesion correctamente");
       } else {
         console.log(json.msg);
         alert(json.msg);
+        alert("Datos incorrectos");
       }
     });
   //.catch((error) => console.log(error));

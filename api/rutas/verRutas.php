@@ -11,6 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $idRuta = $_GET['buscarId'];
             $sql .= " AND idRutas='$idRuta'";
         }
+        if (isset($_GET['buscarUsuario'])) {
+            $usuario = $_GET['buscarUsuario'];
+            $sql .= " AND creador='$usuario'";
+        }
         if (isset($_GET['buscarNombre'])) {
             $nombreRuta = $_GET['buscarNombre'];
             $sql .= " AND nombreRuta='$nombreRuta'";

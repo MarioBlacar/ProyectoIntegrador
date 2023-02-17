@@ -32,7 +32,7 @@
                 </div>
                 <div id="boton">
                     <center>
-                        <h1>cerrar Sesion</h1>
+                        <h1><a href="../landingPage/index.html">cerrar Sesion</a></h1>
                     </center>
                 </div>
             </main>
@@ -64,7 +64,7 @@
                     <ul>
                         <li><a href="../logIn/logIn.php">Iniciar sesion</a></li>
                         <li><a href="../rutas/rutas.php">Buscar rutas</a></li>
-                        <li><a href="../rutas/rutas.php">Rutas guardadas</a></li>
+                        <li><a href="../misRutas/misRutas.php">Rutas guardadas</a></li>
                         <li><a href="../landingPage/index.html">Página principal</a></li>
                     </ul>
                     <p><small><a href="../cerrarSesion/cerrarSesion.php">Cerrar sesion</a></small></p>
@@ -76,14 +76,6 @@
                         <li>Idioma</li>
                     </ul>
                     <p><small>mas recursos...</small></p>
-                </li>
-                <li>
-                    <h3>Sobre Nosotros</h3>
-                    <ul>
-                        <li>Nuestra Historia</li>
-                        <li>Trabaja con nosotros</li>
-                        <li>Instagram</li>
-                    </ul>
                 </li>
             </ul>
         </section>
