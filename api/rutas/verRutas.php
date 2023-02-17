@@ -25,11 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
         if (isset($_GET['buscarDistanciaMinima'])) {
             $distanciaMinima = $_GET['buscarDistanciaMinima'];
-            $sql .= " AND distancia='$distanciaMinima'";
+            $sql .= " AND distancia>'$distanciaMinima'";
         }
         if (isset($_GET['buscarDistanciaMaxima'])) {
             $distanciaMaxima = $_GET['buscarDistanciaMaxima'];
-            $sql .= " AND distancia='$distanciaMaxima'";
+            $sql .= " AND distancia<'$distanciaMaxima'";
         }
 
         $result = $con->query($sql);
